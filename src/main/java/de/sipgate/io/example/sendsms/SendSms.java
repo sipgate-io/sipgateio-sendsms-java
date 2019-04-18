@@ -30,7 +30,7 @@ public class SendSms {
 		Sms sms = new Sms(smsId, message, recipient /* , sendAt */);
 
 		try {
-			HttpResponse<String> response = postRequest(username, password, sms);
+			HttpResponse<String> response = sendNewSmsRequest(username, password, sms);
 			System.out.println("Status: " + response.getStatus());
 			System.out.println("Body: " + response.getBody());
 		} catch (UnirestException e) {
@@ -38,7 +38,7 @@ public class SendSms {
 		}
 	}
 
-	private static HttpResponse<String> postRequest(String username, String password, Sms smsObject)
+	private static HttpResponse<String> sendNewSmsRequest(String username, String password, Sms smsObject)
 			throws UnirestException {
 		return Unirest.post(BASE_URL + "/sessions/sms")
 				.header("Accept", "application/json")

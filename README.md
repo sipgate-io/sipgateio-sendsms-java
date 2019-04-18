@@ -79,7 +79,7 @@ private static final String baseUrl = "https://api.sipgate.com/v2";
 The API expects request data in JSON format. Thus the `Content-Type` header needs to be set accordingly. You can achieve that by using the `header` method from the `Unirest` library.
 
 ```java
-private static HttpResponse<String> postRequest(String username, String password, SMS smsObject)
+private static HttpResponse<String> sendNewSmsRequest(String username, String password, SMS smsObject)
 	throws UnirestException {
 		return Unirest.post(baseUrl + "/sessions/sms")
 			.header("Accept", "application/json")
