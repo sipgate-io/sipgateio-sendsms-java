@@ -101,7 +101,7 @@ public SMS(String smsId, String message, String recipient, long sendAt) {
 }
 ```
 
-We use the java package 'Unirest' for request generation and execution. The `post` method takes as argument the request URL. Headers, authorization header and the request body, are generated from `header`, `basicAuth` and `body` methods respectively. The request URL consists of the base URL defined above and the endpoint `/sessions/sms`. The method `basicAuth` from the 'Unirest' package takes credentials and generates the required Basic Auth header (for more information on Basic Auth see our [code example](https://github.com/sipgate/sipgateio-basicauth-java)).
+We use the java package 'Unirest' for request generation and execution. The `post` method takes as argument the request URL. Headers, authorization header and the request body, are generated from `header`, `basicAuth` and `body` methods respectively. The request URL consists of the base URL defined above and the endpoint `/sessions/sms`. The method `basicAuth` from the 'Unirest' package takes credentials and generates the required Basic Auth header (for more information on Basic Auth see our [code example](https://github.com/sipgate-io/sipgateio-basicauth-java)).
 
 ```java
 Unirest.post(baseUrl + "/sessions/sms")
