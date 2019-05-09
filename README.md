@@ -112,6 +112,8 @@ Unirest.post(baseUrl + "/sessions/sms")
 	.asString();
 ```
 
+> If OAuth should be used for `Authorization` instead of Basic Auth we do not use the `.basicAuth(username, password)` mehthod. Instead we set the authorization header to `Bearer` followed by a space and the access token: `.header("Authorization", "Bearer " + accessToken)`. For an example application interacting with the sipgate API using OAuth see our [sipgate.io Java Oauth example](https://github.com/sipgate-io/sipgateio-oauth-java).
+
 #### Send SMS with custom sender number
 
 By default 'sipgate' will be used as the sender. It is only possible to change the sender to a mobile phone number by verifying ownership of said number. In order to accomplish this, proceed as follows:
