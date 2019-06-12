@@ -177,9 +177,14 @@ This project is licensed under **The Unlicense** (see [LICENSE file](./LICENSE))
 
 This code uses the following external libraries
 
--   unirest:
-    Licensed under the [MIT License](https://opensource.org/licenses/MIT)
-    Website: http://unirest.io/java.html
+- unirest:
+  - Licensed under the [MIT License](https://opensource.org/licenses/MIT)
+  - Website: http://unirest.io/java.html
+
+- jackson:
+  - Licensed under the [Apache-2.0](https://opensource.org/licenses/Apache-2.0)
+  - Website: https://github.com/FasterXML/jackson
+
 
 ---
 
