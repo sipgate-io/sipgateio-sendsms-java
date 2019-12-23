@@ -1,4 +1,4 @@
-package de.sipgate.io.example.sendsms;
+package sipgateio.sendsms;
 
 public class Sms {
 	public String smsId;

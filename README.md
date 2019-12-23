@@ -9,19 +9,12 @@ For further information regarding the sipgate REST API please visit https://api.
 ### Prerequisites
 
 -   JDK 8
--   Maven
 
 ### How To Use
 
 Navigate to the project's root directory.
 
-Install dependencies manually or use your IDE's import functionality:
-
-```bash
-$ mvn dependency:resolve
-```
-
-In order to run the code you have to set the following variables in [SendSms.java](./src/main/java/de/sipgate/io/example/sendsms/SendSms.java):
+In order to run the code you have to set the following variables in [SendSms.java](src/main/java/sipgateio/sendsms/SendSms.java):
 
 ```java
 String username = "YOUR_SIPGATE_EMAIL";
@@ -56,16 +49,8 @@ The `smsId` uniquely identifies the extension from which you wish to send your m
 
 Run the application:
 
-Build JAR
-
 ```bash
-$ mvn package
-```
-
-Run the application:
-
-```bash
-$ java -jar target/sipgateio-send-sms-java-1.0-SNAPSHOT-jar-with-dependencies.jar
+./gradlew run
 ```
 
 ##### How It Works

@@ -1,4 +1,4 @@
-package de.sipgate.io.example.sendsms;
+package sipgateio.sendsms;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

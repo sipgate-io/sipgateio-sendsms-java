@@ -1,4 +1,4 @@
-package de.sipgate.io.example.sendsms;
+package sipgateio.sendsms;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
