@@ -17,8 +17,8 @@ Navigate to the project's root directory.
 In order to run the code you have to set the following variables in [SendSms.java](src/main/java/sipgateio/sendsms/SendSms.java):
 
 ```java
-String username = "YOUR_SIPGATE_EMAIL";
-String password = "YOUR_SIPGATE_PASSWORD";
+String tokenId = "YOUR_SIPGATE_TOKEN_ID";
+String token = "YOUR_SIPGATE_TOKEN";
 
 String smsId = "YOUR_SIPGATE_SMS_EXTENSION";
 
@@ -64,12 +64,12 @@ private static final String baseUrl = "https://api.sipgate.com/v2";
 The API expects request data in JSON format. Thus the `Content-Type` header needs to be set accordingly. You can achieve that by using the `header` method from the `Unirest` library.
 
 ```java
-private static HttpResponse<String> sendNewSmsRequest(String username, String password, SMS smsObject)
+private static HttpResponse<String> sendNewSmsRequest(String tokenId, String token, SMS smsObject)
 	throws UnirestException {
 		return Unirest.post(baseUrl + "/sessions/sms")
 			.header("Accept", "application/json")
 			.header("Content-Type", "application/json")
-			.basicAuth(username, password)
+			.basicAuth(tokenId, token)
 			.body(smsObject)
 			.asString();
 	}
@@ -92,12 +92,12 @@ We use the java package 'Unirest' for request generation and execution. The `pos
 Unirest.post(baseUrl + "/sessions/sms")
 	.header("Accept", "application/json")
 	.header("Content-Type", "application/json")
-	.basicAuth(username, password)
+	.basicAuth(tokenId, token)
 	.body(smsObject)
 	.asString();
 ```
 
-> If OAuth should be used for `Authorization` instead of Basic Auth we do not use the `.basicAuth(username, password)` mehthod. Instead we set the authorization header to `Bearer` followed by a space and the access token: `.header("Authorization", "Bearer " + accessToken)`. For an example application interacting with the sipgate API using OAuth see our [sipgate.io Java Oauth example](https://github.com/sipgate-io/sipgateio-oauth-java).
+> If OAuth should be used for `Authorization` instead of Basic Auth we do not use the `.basicAuth(tokenId, token)` mehthod. Instead we set the authorization header to `Bearer` followed by a space and the access token: `.header("Authorization", "Bearer " + accessToken)`. For an example application interacting with the sipgate API using OAuth see our [sipgate.io Java Oauth example](https://github.com/sipgate-io/sipgateio-oauth-java).
 
 #### Send SMS with custom sender number
 
@@ -116,10 +116,10 @@ You can use the sipgate api to find out what your extension is. For example:
 
 ```bash
 curl \
---user username:password \
+--user tokenId:token \
 https://api.sipgate.com/v2/{userId}/sms
 ```
-Replace `username` and `password` with your sipgate credentials and `userId` with your sipgate user id.
+Replace `tokenId` and `token` with your sipgate credentials and `userId` with your sipgate user id.
 
 The user id consists of the letter 'w' followed by a number (e.g. 'w0'). It can be found as follows:
 
@@ -141,7 +141,7 @@ Possible reasons are:
 | reason                                                                                                                                              | errorcode |
 | --------------------------------------------------------------------------------------------------------------------------------------------------- | :-------: |
 | bad request (e.g. request body fields are empty or only contain spaces, timestamp is invalid etc.)                                                  |    400    |
-| username and/or password are wrong                                                                                                                  |    401    |
+| tokenId and/or token are wrong                                                                                                                      |    401    |
 | insufficient account balance                                                                                                                        |    402    |
 | no permission to use specified SMS extension (e.g. SMS feature not booked, user password must be reset in [web app](https://app.sipgate.com/login)) |    403    |
 | wrong REST API endpoint                                                                                                                             |    404    |

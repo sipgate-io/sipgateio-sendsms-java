@@ -11,8 +11,8 @@ public class SendSms {
 	public static void main(String[] args) {
 		Unirest.setObjectMapper(new SmsObjectMapper());
 
-		String username = "YOUR_SIPGATE_EMAIL";
-		String password = "YOUR_SIPGATE_PASSWORD";
+		String tokenId = "YOUR_SIPGATE_TOKEN_ID";
+		String token = "YOUR_SIPGATE_TOKEN";
 
 		String smsId = "YOUR_SIPGATE_SMS_EXTENSION";
 
@@ -30,7 +30,7 @@ public class SendSms {
 		Sms sms = new Sms(smsId, message, recipient /* , sendAt */);
 
 		try {
-			HttpResponse<String> response = sendNewSmsRequest(username, password, sms);
+			HttpResponse<String> response = sendNewSmsRequest(tokenId, token, sms);
 			System.out.println("Status: " + response.getStatus());
 			System.out.println("Body: " + response.getBody());
 		} catch (UnirestException e) {
@@ -38,12 +38,12 @@ public class SendSms {
 		}
 	}
 
-	private static HttpResponse<String> sendNewSmsRequest(String username, String password, Sms smsObject)
+	private static HttpResponse<String> sendNewSmsRequest(String tokenId, String token, Sms smsObject)
 			throws UnirestException {
 		return Unirest.post(BASE_URL + "/sessions/sms")
 				.header("Accept", "application/json")
 				.header("Content-Type", "application/json")
-				.basicAuth(username, password)
+				.basicAuth(tokenId, token)
 				.body(smsObject)
 				.asString();
 	}
