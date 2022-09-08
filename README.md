@@ -14,22 +14,19 @@ For further information regarding the sipgate REST API please visit https://api.
 
 Navigate to the project's root directory.
 
-In order to run the code you have to set the following variables in [SendSms.java](src/main/java/sipgateio/sendsms/SendSms.java):
-
-```java
-String tokenId = "YOUR_SIPGATE_TOKEN_ID";
-String token = "YOUR_SIPGATE_TOKEN";
-
-String smsId = "YOUR_SIPGATE_SMS_EXTENSION";
-
-String message = "YOUR_MESSAGE";
-String recipient = "RECIPIENT_PHONE_NUMBER";
-```
+Create the `.env` by copying the [`.env.example`](.env.example) and set the values according to the comment above each variable.
 
 The token should have the `sessions:sms:write` scope. For more information about personal access tokens visit https://www.sipgate.io/rest-api/authentication#personalAccessToken.
 
 
 The `smsId` uniquely identifies the extension from which you wish to send your message. Further explanation is given in the section [Web SMS Extensions](#web-sms-extensions).
+
+In order to run the code you also have to set the following variable in [SendSms.java](src/main/java/sipgateio/sendsms/SendSms.java):
+
+```java
+String message = "YOUR_MESSAGE";
+```
+
 
 > **Optional:**
 > In order to send a delayed message uncomment the following lines and set the desired date and time in the future (up to one month):

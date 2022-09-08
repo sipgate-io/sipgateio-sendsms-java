@@ -3,6 +3,7 @@ package sipgateio.sendsms;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class SendSms {
 
@@ -11,13 +12,15 @@ public class SendSms {
 	public static void main(String[] args) {
 		Unirest.setObjectMapper(new SmsObjectMapper());
 
-		String tokenId = "YOUR_SIPGATE_TOKEN_ID";
-		String token = "YOUR_SIPGATE_TOKEN";
+		Dotenv dotenv = Dotenv.load();
 
-		String smsId = "YOUR_SIPGATE_SMS_EXTENSION";
+		String tokenId = dotenv.get("TOKEN_ID");
+		String token = dotenv.get("TOKEN");
+
+		String smsId = dotenv.get("SMS_ID");
 
 		String message = "YOUR_MESSAGE";
-		String recipient = "RECIPIENT_PHONE_NUMBER";
+		String recipient = dotenv.get("RECIPIENT");
 
 		/*
 		Only needed when sending a scheduled sms at specific date
